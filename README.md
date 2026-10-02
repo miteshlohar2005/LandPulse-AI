@@ -1,466 +1,281 @@
-# 🌍 LandPulse AI
+# LandPulse AI
 
-### Predict Land Acquisition Delays. Prevent Project Bottlenecks.
+> **Predict Land Acquisition Delays. Prevent Project Bottlenecks.**
 
-LandPulse AI is an AI-powered predictive analytics and decision-support platform designed to identify potential delays in land acquisition processes before they become critical.
+LandPulse AI is an enterprise-grade, AI-powered predictive analytics and decision-support platform designed to identify potential delays in land acquisition processes, analyze project risk, explain the reasons behind predicted risks, visualize geographic risk, generate actionable alerts, and recommend preventive interventions.
 
-Large infrastructure projects such as highways, railways, irrigation systems, renewable energy parks, industrial corridors, and urban development projects often depend on timely land acquisition. Delays in compensation, documentation, legal disputes, approvals, rehabilitation, and possession can significantly affect project timelines.
-
-LandPulse AI brings these factors together into a single platform and uses machine learning, explainable AI, GIS visualization, and risk analytics to help project authorities identify bottlenecks early and take informed action.
-
----
-
-## 🚨 The Problem
-
-Land acquisition is a multi-stage process involving multiple departments, stakeholders, legal procedures, documentation, compensation, rehabilitation, and physical possession.
-
-A delay in one stage can create a chain reaction across the entire infrastructure project.
-
-Common causes of delay include:
-
-- Pending compensation payments
-- Legal and ownership disputes
-- Incomplete land documentation
-- Delayed statutory approvals
-- Survey and demarcation issues
-- Slow stakeholder response
-- Rehabilitation and resettlement delays
-- Low progress in physical possession
-- Administrative bottlenecks
-- Historical delays in specific regions
-
-Traditional systems generally focus on recording and monitoring existing information.
-
-The major challenge is:
-
-> **How can potential land acquisition delays be identified early enough to take preventive action?**
+![React](https://img.shields.io/badge/React-19-blue?style=for-the-badge&logo=react)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue?style=for-the-badge&logo=typescript)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.141-009688?style=for-the-badge&logo=fastapi)
+![Python](https://img.shields.io/badge/Python-3.11-3776AB?style=for-the-badge&logo=python)
+![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-1.9.0-F7931E?style=for-the-badge&logo=scikit-learn)
+![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?style=for-the-badge&logo=docker)
 
 ---
 
-## 💡 Our Solution
+## 📖 Overview
 
-LandPulse AI converts land acquisition data into actionable risk intelligence.
+Infrastructure development often faces severe delays due to complex land acquisition processes. LandPulse AI proactively monitors infrastructure projects throughout their lifecycle, utilizing machine learning to predict bottlenecks before they cause significant delays. By analyzing geospatial, financial, legal, and demographic data, the platform provides early warnings and strategic recommendations to ensure projects remain on schedule.
 
-The platform analyzes project-level information and produces:
+## ⚠️ The Problem
 
-- 📊 Overall Risk Score
-- 📈 Delay Probability
-- ⏳ Predicted Additional Delay
-- 🧠 Explainable AI Risk Factors
-- 🗺️ Geographic Risk Visualization
-- 🚨 Automated Risk Alerts
-- 💡 Recommended Actions
-- 📅 Acquisition Stage Tracking
-- 📋 Project Performance Analytics
+The land acquisition lifecycle spans multiple complex stages—from initial notification and social impact assessment to compensation disbursement and physical possession. Traditional project monitoring is reactive, leading to:
 
-Instead of simply showing what has already gone wrong, LandPulse AI focuses on identifying **where a project is likely to face problems next**.
+- Unforeseen legal disputes stalling multi-million dollar investments.
+- Delays in statutory clearances blocking subsequent acquisition phases.
+- Insufficient tracking of rehabilitation and resettlement progress.
+- Budget overruns resulting from extended project timelines.
 
----
+Without predictive intelligence, administrators lack the foresight required to allocate resources effectively and prevent bottlenecks.
 
-# ✨ Key Features
+## 💡 The Solution
 
-## 🤖 AI-Powered Risk Prediction
+LandPulse AI transitions project monitoring from reactive tracking to proactive intelligence. It ingests multidimensional project parameters and leverages machine learning models (Random Forest, Gradient Boosting, Logistic Regression) to assess the probability of delay, evaluate the risk severity, and present an actionable mitigation strategy.
 
-LandPulse AI uses machine learning models to estimate the probability of land acquisition delays.
+## ✨ Key Features
 
-The system supports multiple models including:
+- **AI/ML Risk Prediction:** Real-time calculation of delay probability, risk score, and estimated delay duration.
+- **Explainable AI (XAI):** Transparent breakdown of the factors contributing to the risk score (e.g., pending clearances, low stakeholder responsiveness).
+- **GIS / Geographic Intelligence:** Interactive map plotting of projects color-coded by risk category, powered by Leaflet.
+- **Action Recommendation Engine:** Automated, rule-based mitigation strategies targeting specific identified bottlenecks.
+- **Intelligent Alerts:** Automated alerts highlighting high-severity issues requiring immediate administrative intervention.
+- **Project Lifecycle Tracking:** Granular progress monitoring across all land acquisition stages.
+- **Analytics Dashboard:** Executive-level KPI metrics covering state/district trends and delay factors.
+- **Model Management:** API endpoints and UI to review current active ML models, accuracy, and training metrics.
+- **Role-Based Access Control (RBAC):** Secure access tiers ensuring appropriate data visibility and action capabilities.
 
-- Logistic Regression
-- Random Forest
-- Gradient Boosting
-- Random Forest Regression
+## ⚙️ How It Works
 
-The training pipeline evaluates model performance using:
+```mermaid
+flowchart TD
+    A[Project Data] --> B(Data Preprocessing)
+    B --> C(Feature Engineering)
+    C --> D{ML Prediction Engine}
+    D -->|Delay Probability| E[Risk Assessment]
+    D -->|Factor Weights| F[Explainable AI]
+    E --> G[Intelligent Alerts]
+    F --> H[Recommendation Engine]
+    G --> I((Executive Dashboard))
+    H --> I
+```
 
-- Accuracy
-- Precision
-- Recall
-- F1 Score
-- ROC-AUC
+## 🧠 AI / Machine Learning
 
-The best-performing model can be selected for prediction.
+The platform's prediction engine trains and evaluates multiple classification and regression models to determine the optimal active model:
 
----
+- **Input Features:** Land area, affected families, compensation percentage, approval delay days, legal disputes, documentation status, historical delay scores, and stakeholder responsiveness.
+- **Algorithms Evaluated:** Logistic Regression, Random Forest Classifier, Gradient Boosting Classifier (for risk categorization); Random Forest Regressor (for delay duration prediction).
+- **Model Output:** Risk Category (LOW, MEDIUM, HIGH, CRITICAL), Delay Probability (%), and Risk Score (1-10).
+- **Model Management:** Active models and historical metadata are persisted via `joblib`, enabling performance tracking and retraining capabilities.
 
-## 🧠 Explainable AI
+### Explainable AI
+The XAI module dissects the prediction to answer *"Why is this project at risk?"* It outputs a percentage impact for each feature, categorizing factors as either mitigating (negative impact) or aggravating (positive impact on delay risk). 
 
-Prediction alone is not enough.
+## 🗺️ GIS / Geographic Intelligence
 
-LandPulse AI explains the major factors contributing to the predicted risk.
+Projects are visualized geospatially using React-Leaflet. The map provides:
+- Live clustering of infrastructure projects based on geographic coordinates.
+- Color-coded risk markers (Red = Critical, Orange = High, Yellow = Medium, Green = Low).
+- Interactive popups containing instant summaries of project health, expected completion dates, and risk scores.
 
-Example:
+## 🔄 Land Acquisition Lifecycle
 
-```text
-Risk Score: 8.4 / 10
+The system accurately tracks projects across standard acquisition stages:
+- Preliminary Notification
+- Social Impact Assessment
+- Documentation & Survey
+- Compensation Disbursement
+- Rehabilitation & Resettlement
+- Possession
+- Final Acquisition
 
-Major Risk Factors:
+## 🛡️ Risk & Recommendation System
 
-Pending Compensation       +27%
-Legal Disputes              +21%
-Statutory Clearance         +17%
-Incomplete Documentation    +11%
+When the ML engine identifies a high-risk project, the recommendation engine maps the specific failing features to actionable administrative interventions:
 
-Stakeholder Engagement       -7%
+- **Example 1:** If Legal Disputes > 3 → *Recommend expediting Alternative Dispute Resolution and appointing a dedicated nodal legal officer.*
+- **Example 2:** If Rehabilitation < 50% & Stage is Possession → *Recommend fast-tracking basic civic amenities at the resettlement colony.*
 
-This allows users to understand:
-Why is this project at risk?
+## 🔐 Role-Based Access Control
 
-rather than receiving only a prediction.
-🗺️ GIS Risk Map
-LandPulse AI provides an interactive geographic view of projects.
-The GIS module helps users:
-- Locate projects geographically
-- Visualize project risk
-- Identify high-risk regions
-- Compare project locations
-- Analyze district-level patterns
-- Track geographic concentration of delays
-Built using:
-- Leaflet
-- OpenStreetMap
-- GeoJSON
-📋 Land Acquisition Lifecycle
-The system models the acquisition process through multiple stages:
-Preliminary Investigation
-          ↓
-Notification
-          ↓
-Land Survey & Demarcation
-          ↓
-Objection / Legal Hearing
-          ↓
-Compensation Assessment
-          ↓
-Compensation Disbursement
-          ↓
-Rehabilitation & Resettlement
-          ↓
-Physical Possession
-          ↓
-Final Acquisition
+| Role | Purpose | Capabilities |
+|------|---------|--------------|
+| **Administrator** | Full system control | User management, model retraining, system configuration |
+| **State Officer** | State-level oversight | View all state projects, override predictions, acknowledge alerts |
+| **District Officer** | District execution | Manage district projects, update progress milestones, upload documents |
+| **Project Manager** | Specific project management | Update specific project details, respond to project-level recommendations |
+| **Viewer** | Auditing and reporting | Read-only access to dashboards, reports, and map views |
 
-Each stage can contribute different levels of risk to the overall project.
-🚨 Smart Alerts
-LandPulse AI can identify projects crossing defined risk thresholds and generate alerts.
-Example:
-⚠ High Risk Detected
+## 🏗️ System Architecture
 
-Project: Infrastructure Project A
+```mermaid
+flowchart LR
+    subgraph Frontend [React Frontend]
+        UI[React + Vite + Tailwind]
+        GIS[Leaflet Maps]
+        Charts[Recharts]
+    end
+    subgraph API [FastAPI Backend]
+        Router[API Endpoints]
+        Auth[JWT Authentication]
+    end
+    subgraph Core [AI & Data]
+        ML[Scikit-Learn / Joblib]
+        DB[(SQLite / PostgreSQL)]
+    end
+    UI <-->|REST / JSON| Router
+    Router <--> Auth
+    Router <--> ML
+    Router <--> DB
+```
 
-Risk Score: 8.4 / 10
-Delay Probability: 84%
-Expected Additional Delay: 68 Days
+## 🔌 API Overview
 
-Primary Issue:
-Pending compensation + active legal disputes
+The backend is built with FastAPI, providing robust RESTful endpoints.
 
-Recommended Action:
-Prioritize compensation verification
-and legal resolution.
+| Method | Route | Purpose |
+|--------|-------|---------|
+| `POST` | `/api/auth/login` | Authenticate user and issue JWT |
+| `GET`  | `/api/dashboard` | Fetch aggregated KPIs and system metrics |
+| `GET`  | `/api/projects` | List paginated projects |
+| `GET`  | `/api/projects/{id}` | Get detailed project data and prediction history |
+| `POST` | `/api/predict` | Generate real-time risk prediction from payload |
+| `GET`  | `/api/alerts` | Fetch active risk alerts |
+| `GET`  | `/api/recommendations` | Get system-generated action recommendations |
+| `GET`  | `/api/map/projects` | Fetch GeoJSON feature collection for GIS mapping |
+| `GET`  | `/api/model/status` | Retrieve active ML model metrics and metadata |
 
-💡 Recommendation Engine
-The platform converts identified bottlenecks into actionable recommendations.
-Examples:
-- Expedite compensation processing
-- Review pending legal cases
-- Complete documentation verification
-- Prioritize land survey
-- Improve stakeholder coordination
-- Monitor rehabilitation progress
-This helps move from:
-Prediction
-    ↓
-Explanation
-    ↓
-Recommendation
-    ↓
-Action
+## 💻 Installation
 
-👥 Role-Based Access
-LandPulse AI supports role-based access for different categories of users.
-Role	Capabilities
-Administrator	System administration, analytics and model management
-State Officer	State-level monitoring and risk analysis
-District Officer	District-level project monitoring
-Project Manager	Project progress and milestone management
-Viewer / Analyst	Read-only analytics and reports
+### Prerequisites
+- Python 3.11+
+- Node.js 20+
 
+### Setup Instructions
 
-🏗️ System Architecture
-                    LANDPULSE AI
-                         │
-                         ▼
-              ┌─────────────────────┐
-              │   React Frontend    │
-              │ React + TypeScript  │
-              │ Vite + Tailwind     │
-              └──────────┬──────────┘
-                         │
-                    REST / JSON
-                         │
-                         ▼
-              ┌─────────────────────┐
-              │   FastAPI Backend   │
-              │ Authentication      │
-              │ Projects & Analytics│
-              │ Alerts & APIs       │
-              └──────────┬──────────┘
-                         │
-             ┌───────────┴───────────┐
-             ▼                       ▼
-    ┌─────────────────┐     ┌─────────────────┐
-    │  ML / XAI       │     │   Database      │
-    │                 │     │                 │
-    │ Risk Prediction │     │ SQLite          │
-    │ Delay Forecast  │     │ PostgreSQL      │
-    │ XAI Analysis    │     │ SQLAlchemy      │
-    └─────────────────┘     └─────────────────┘
-
-🧠 Machine Learning Pipeline
-Historical / Demo Data
-          ↓
-Data Cleaning
-          ↓
-Feature Engineering
-          ↓
-Risk Factor Analysis
-          ↓
-Model Training
-          ↓
-Model Evaluation
-          ↓
-Best Model Selection
-          ↓
-Risk Prediction
-          ↓
-Explainable AI
-          ↓
-Recommendations
-          ↓
-Alerts & Dashboard
-
-📊 Prediction Factors
-The model can analyze factors such as:
-- Land area
-- Number of affected families
-- Compensation progress
-- Approval delay
-- Number of legal disputes
-- Documentation completeness
-- Notification status
-- Possession progress
-- Rehabilitation progress
-- Stakeholder responsiveness
-- Historical regional delay score
-- Current acquisition stage
-- Project type
-- State / region
-These features help create a more comprehensive project risk profile.
-🛠️ Technology Stack
-Frontend
-- React
-- TypeScript
-- Vite
-- Tailwind CSS
-- Leaflet
-- Recharts
-- Lucide Icons
-Backend
-- Python
-- FastAPI
-- SQLAlchemy
-- JWT Authentication
-- REST APIs
-Machine Learning
-- Scikit-learn
-- Random Forest
-- Gradient Boosting
-- Logistic Regression
-- Random Forest Regression
-- Explainable AI
-Database
-- SQLite
-- PostgreSQL
-- SQLAlchemy ORM
-Development & Deployment
-- Docker
-- Docker Compose
-- Vercel
-- Python Virtual Environment
-📁 Project Structure
-LandPulse-AI/
-│
-├── backend/
-│   └── app/
-│       ├── api/
-│       ├── auth/
-│       ├── core/
-│       ├── database/
-│       ├── models/
-│       └── schemas/
-│
-├── frontend/
-│   ├── public/
-│   └── src/
-│       ├── components/
-│       ├── pages/
-│       ├── services/
-│       ├── data/
-│       └── types/
-│
-├── ml/
-│   ├── data/
-│   ├── saved_models/
-│   ├── clean_data.py
-│   ├── preprocessing.py
-│   ├── train.py
-│   ├── predict.py
-│   ├── explain.py
-│   └── recommendation_engine.py
-│
-├── scripts/
-│   └── generate_demo_data.py
-│
-├── tests/
-│   └── test_backend.py
-│
-├── prisma/
-│   └── schema.prisma
-│
-├── Dockerfile
-├── docker-compose.yml
-├── requirements.txt
-└── README.md
-
-🚀 Getting Started
-Prerequisites
-Make sure you have installed:
-- Python 3.10+
-- Node.js 18+
-- npm
-- Git
-1. Clone the Repository
+```bash
+# 1. Clone the repository
 git clone https://github.com/miteshlohar2005/LandPulse-AI.git
 cd LandPulse-AI
 
-2. Create Python Virtual Environment
-Windows
+# 2. Setup Python Virtual Environment
 python -m venv .venv
-.venv\Scripts\activate
+source .venv/bin/activate  # On Windows use: .venv\Scripts\activate
 
-Linux / macOS
-python3 -m venv .venv
-source .venv/bin/activate
-
-3. Install Backend Dependencies
+# 3. Install Backend Dependencies
 pip install -r requirements.txt
 
-4. Generate Demo Data
+# 4. Generate Demo Data and Train the Initial Model
 python scripts/generate_demo_data.py
-
-5. Train the ML Models
 python ml/train.py
 
-6. Install Frontend Dependencies
+# 5. Setup Frontend
 cd frontend
 npm install
-cd ..
+```
 
-▶️ Run the Application
-Backend
-uvicorn backend.app.main:app --reload --port 8000
+## 🔑 Environment Variables
 
-Backend:
-http://localhost:8000
+Copy the `.env.example` to `.env` in the root directory.
 
-API documentation:
-http://localhost:8000/api/docs
+| Variable | Purpose | Required |
+|----------|---------|----------|
+| `PROJECT_NAME` | Name of the application instance | Yes |
+| `SECRET_KEY` | Key for JWT token generation | Yes |
+| `DATABASE_URL` | Connection string (SQLite or PostgreSQL) | Yes |
+| `PORT` | Backend API port (default 8000) | Yes |
 
-Frontend
-Open another terminal:
+*Note: Never expose actual API keys, JWT secrets, or database credentials in public repositories.*
+
+## 🚀 Running Locally
+
+Open two separate terminal windows.
+
+**Terminal 1: Backend**
+```bash
+# Ensure virtual environment is active
+uvicorn backend.app.main:app --host 0.0.0.0 --port 8000 --reload
+```
+
+**Terminal 2: Frontend**
+```bash
 cd frontend
 npm run dev
+```
 
-Frontend:
-http://localhost:5173
+The frontend will be available at `http://localhost:5173` and the backend at `http://localhost:8000`.
 
-🐳 Docker
-The application can also be started using Docker:
-docker-compose up --build
+## 📚 API Documentation
 
-Then open:
-http://localhost:8000
+Once the backend is running, FastAPI automatically generates documentation interfaces:
+- **Swagger UI:** `http://localhost:8000/api/docs`
+- **ReDoc:** `http://localhost:8000/api/redoc`
 
-🧪 Testing
-Run the backend test suite:
-pytest tests/test_backend.py -v
+## 🧪 Testing
 
-The test suite covers areas such as:
-- API health
-- Database connectivity
-- Authentication
-- Role authorization
-- Dashboard analytics
-- Project filtering
-- Prediction API
-- GIS endpoints
-- Alerts
-- Model management
-📈 Example Risk Assessment
-Project
-────────────────────────────────────
-Infrastructure Project A
+The platform uses `pytest` for backend and API testing, covering health checks, authentication, data endpoints, and ML predictions.
 
-Risk Score             8.4 / 10
-Delay Probability      84%
-Expected Delay         68 Days
-Risk Level             HIGH
+```bash
+# Run the test suite
+pytest tests/
+```
 
-Major Contributors
-────────────────────────────────────
-Pending Compensation       High
-Legal Disputes             High
-Approval Delay             Medium
-Documentation              Medium
+## 🐳 Docker
 
-Recommended Actions
-────────────────────────────────────
-✓ Verify pending compensation
-✓ Review legal disputes
-✓ Complete documentation
-✓ Monitor statutory approvals
+The repository includes a multi-stage `Dockerfile` and `docker-compose.yml` for containerized deployment. The build process automatically installs dependencies, builds the React frontend, trains the baseline ML model, and exposes the system on port 8000.
 
-🎯 Real-World Applications
-LandPulse AI can be adapted for monitoring land acquisition associated with:
-- 🛣️ Highway and expressway projects
-- 🚆 Railway infrastructure
-- 💧 Irrigation and water projects
-- ⚡ Renewable energy projects
-- 🏭 Industrial corridors
-- 🏙️ Urban infrastructure
-- ⛏️ Mining projects
-- 🚇 Metro and transportation projects
-🔮 Future Enhancements
-Planned improvements include:
-- Satellite imagery integration
-- Automated land-progress monitoring
-- Integration with digital land-record systems
-- SMS / WhatsApp alert integration
-- Advanced time-series forecasting
-- Natural-language legal document analysis
-- Real-time project data synchronization
-- Mobile application
-- Advanced regional risk forecasting
-🔐 Data & Disclaimer
-The current repository uses synthetic demonstration data for development, testing, and system demonstration.
-The predictions generated by the system should not be treated as official legal, financial, or administrative decisions.
-For real-world deployment, the platform would require integration with verified land records, project databases, legal information, and authorized institutional data sources.
-👨‍💻 Developer
-Mitesh Ramesh Lohar
-Computer Engineering Student
-India
-Connect
-- GitHub: https://github.com/miteshlohar2005
-- LinkedIn: https://www.linkedin.com/in/mitesh-ramesh-lohar/
-📄 License
-This project is intended for educational, research, and demonstration purposes.
+```bash
+# Build and run the containers in detached mode
+docker-compose up -d --build
+```
+
+## 📸 Screenshots
+
+*Screenshots can be added here.*
+
+## 🎯 Use Cases
+
+LandPulse AI is designed to monitor a variety of complex infrastructure developments:
+- **Highways & Expressways:** Managing linear acquisition across multiple districts.
+- **Railways:** Tracking complex alignment and clearance procedures.
+- **Irrigation Projects:** Managing vast areas requiring extensive rehabilitation.
+- **Industrial Corridors & Mining:** Assessing high-value commercial impact zones.
+- **Renewable Energy Projects:** Monitoring land possession for large-scale solar/wind parks.
+
+## 🚀 Future Improvements (Future Scope)
+
+- **Deep Learning Enhancements:** Integration of neural networks for complex non-linear risk factor analysis.
+- **Satellite Imagery Integration:** Utilizing Earth observation data to verify physical possession and rehabilitation site progress.
+- **Real-Time Integration:** Connecting directly with state-level land registry APIs for live data ingestion.
+- **Generative AI Reports:** Automated generation of detailed monthly administrative PDF briefs using LLMs.
+
+## 📊 Data & Limitations
+
+**IMPORTANT:** The current repository utilizes synthetic/demo data generated via `scripts/generate_demo_data.py` for development, testing, and demonstration purposes.
+
+Predictions, geographical coordinates, and project details are simulated. Production deployment requires integration with real institutional databases, and the machine learning models must be retrained on authenticated historical records before influencing actual administrative decisions.
+
+## 🔒 Security Considerations
+
+- **Authentication:** Token-based authentication using JSON Web Tokens (JWT).
+- **Authorization:** Granular Role-Based Access Control enforced at the API route level.
+- **Environment Isolation:** Sensitive configurations managed exclusively via environment variables.
+- **Secret Management:** Hardcoded credentials are strictly avoided. Ensure secure secret injection in production environments (e.g., via Docker secrets or cloud provider key management).
+
+## 🤝 Contributing
+
+1. Fork the repository.
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`).
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`).
+4. Push to the branch (`git push origin feature/AmazingFeature`).
+5. Open a Pull Request.
+
+## 📄 License
+
+*This project currently does not contain a license file. A standard open-source license (such as MIT or Apache 2.0) should be added prior to production deployment or broader distribution.*
+
+## 👨‍💻 Developer
+
+**Mitesh Ramesh Lohar**
+- GitHub: [https://github.com/miteshlohar2005](https://github.com/miteshlohar2005)
+- LinkedIn: [https://www.linkedin.com/in/mitesh-ramesh-lohar/](https://www.linkedin.com/in/mitesh-ramesh-lohar/)
