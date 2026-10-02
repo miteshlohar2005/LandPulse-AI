@@ -1,0 +1,80 @@
+{
+  "version": "v1.20260902-logi",
+  "algorithm": "Logistic Regression",
+  "metrics": {
+    "algorithm": "Logistic Regression",
+    "accuracy": 0.9707317073170731,
+    "precision": 0.9603174603174603,
+    "recall": 0.9918032786885246,
+    "f1_score": 0.9758064516129032,
+    "roc_auc": 0.9992099545723879,
+    "confusion_matrix": [
+      [
+        78,
+        5
+      ],
+      [
+        1,
+        121
+      ]
+    ]
+  },
+  "all_model_metrics": {
+    "logistic_regression": {
+      "algorithm": "Logistic Regression",
+      "accuracy": 0.9707317073170731,
+      "precision": 0.9603174603174603,
+      "recall": 0.9918032786885246,
+      "f1_score": 0.9758064516129032,
+      "roc_auc": 0.9992099545723879,
+      "confusion_matrix": [
+        [
+          78,
+          5
+        ],
+        [
+          1,
+          121
+        ]
+      ]
+    },
+    "random_forest": {
+      "algorithm": "Random Forest",
+      "accuracy": 0.9170731707317074,
+      "precision": 0.8776978417266187,
+      "recall": 1.0,
+      "f1_score": 0.9348659003831418,
+      "roc_auc": 0.991111988939364,
+      "confusion_matrix": [
+        [
+          66,
+          17
+        ],
+        [
+          0,
+          122
+        ]
+      ]
+    },
+    "gradient_boosting": {
+      "algorithm": "Gradient Boosting",
+      "accuracy": 0.9317073170731708,
+      "precision": 0.9029850746268657,
+      "recall": 0.9918032786885246,
+      "f1_score": 0.9453125,
+      "roc_auc": 0.9914082559747186,
+      "confusion_matrix": [
+        [
+          70,
+          13
+        ],
+        [
+          1,
+          121
+        ]
+      ]
+    }
+  },
+  "trained_at": "2026-09-02T15:58:56.432240",
+  "train_records_count": 1021
+}

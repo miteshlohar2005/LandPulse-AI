@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  landguard-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: landguard_ai_app
+    ports:
+      - "8000:8000"
+    environment:
+      - SECRET_KEY=landguard-ai-sih2026-super-secure-jwt-key-dolr-gov-in
+      - DATABASE_URL=sqlite:///./landguard.db
+    volumes:
+      - landguard_data:/app/ml/saved_models
+      - landguard_uploads:/app/uploads
+    restart: unless-stopped
+
+volumes:
+  landguard_data:
+  landguard_uploads:
